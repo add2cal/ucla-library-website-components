@@ -111,6 +111,9 @@ const parsedEventDescription = computed(() => {
   return ''
 })
 
+// Add to Calendar Button configuration for server-rendered markup.
+// https://add-to-calendar-button.com/configuration
+// debugModeEnabled is passed as the Add to Calendar Button debug option; enable it at page level when troubleshooting.
 const atcbSsrHtml = computed(() => atcb_generate_ssr_html({
   name: title, startDate: parsedDateAndTime.value.startDate, startTime: parsedDateAndTime.value.startTime, endTime: parsedEndTime.value, timeZone: 'America/Los_Angeles', location: parsedLocation.value, description: parsedEventDescription.value, options: ['google', 'apple', 'ms365', 'outlookcom', 'ical'], trigger: 'click', hideBranding: true, hideCheckmark: true, hideBackground: true, hideIconButton: true, listStyle: 'dropdown-static', debug: debugModeEnabled,
 }))
