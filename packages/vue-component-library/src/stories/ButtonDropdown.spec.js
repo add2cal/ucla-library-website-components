@@ -22,4 +22,16 @@ describe('FTVA add to calendar button', () => {
       })
     })
   })
+
+  it('uses native v3 dropdown styling without UCLA compatibility hooks', () => {
+    cy.readFile('src/lib-components/ButtonDropdown.vue')
+      .should('not.contain', 'customCss')
+      .and('not.contain', 'handleActbExpandedStyle')
+      .and('not.contain', 'shadowRoot')
+      .and('not.contain', 'appendChild')
+
+    cy.readFile('src/styles/ftva/_button-dropdown.scss')
+      .should('not.contain', 'atcb-button-text)::after')
+      .and('not.contain', 'icon-ftva-drop-triangle')
+  })
 })

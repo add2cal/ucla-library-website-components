@@ -115,7 +115,7 @@ const parsedEventDescription = computed(() => {
 // https://add-to-calendar-button.com/configuration
 // debugModeEnabled is passed as the Add to Calendar Button debug option; enable it at page level when troubleshooting.
 const atcbSsrHtml = computed(() => atcb_generate_ssr_html({
-  name: title, startDate: parsedDateAndTime.value.startDate, startTime: parsedDateAndTime.value.startTime, endTime: parsedEndTime.value, timeZone: 'America/Los_Angeles', location: parsedLocation.value, description: parsedEventDescription.value, options: ['google', 'apple', 'ms365', 'outlookcom', 'ical'], trigger: 'click', hideBranding: true, hideCheckmark: true, hideBackground: true, hideIconButton: true, listStyle: 'dropdown-static', customCss: '.atcb-button.atcb-active { border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; } .atcb-active .atcb-text::after { transform: rotate(180deg); } #atcb-bgoverlay.atcb-click:hover { cursor: unset; }', debug: debugModeEnabled,
+  name: title, startDate: parsedDateAndTime.value.startDate, startTime: parsedDateAndTime.value.startTime, endTime: parsedEndTime.value, timeZone: 'America/Los_Angeles', location: parsedLocation.value, description: parsedEventDescription.value, options: ['google', 'apple', 'ms365', 'outlookcom', 'ical'], trigger: 'click', hideBranding: true, hideCheckmark: true, hideBackground: true, hideIconButton: true, listStyle: 'dropdown-static', debug: debugModeEnabled,
 }))
 
 /*

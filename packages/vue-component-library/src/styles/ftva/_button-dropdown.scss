@@ -51,14 +51,6 @@
         outline-offset: 1px;
     }
 
-    :deep(add-to-calendar-button)::part(atcb-button-text)::after {
-        position: relative;
-        display: inline-block;
-        left: 116px;
-        top: -1px;
-        content: url("ucla-library-design-tokens/assets/svgs/icon-ftva-drop-triangle.svg");
-        filter: brightness(0) saturate(100%) invert(30%);
-    }
 
     :deep(add-to-calendar-button)::part(atcb-list-wrapper) {
         background: ftvatokens.$white;
