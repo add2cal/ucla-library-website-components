@@ -115,30 +115,8 @@ const parsedEventDescription = computed(() => {
 // https://add-to-calendar-button.com/configuration
 // debugModeEnabled is passed as the Add to Calendar Button debug option; enable it at page level when troubleshooting.
 const atcbSsrHtml = computed(() => atcb_generate_ssr_html({
-  name: title, startDate: parsedDateAndTime.value.startDate, startTime: parsedDateAndTime.value.startTime, endTime: parsedEndTime.value, timeZone: 'America/Los_Angeles', location: parsedLocation.value, description: parsedEventDescription.value, options: ['google', 'apple', 'ms365', 'outlookcom', 'ical'], trigger: 'click', hideBranding: true, hideCheckmark: true, hideBackground: true, hideIconButton: true, listStyle: 'dropdown-static', debug: debugModeEnabled,
+  name: title, startDate: parsedDateAndTime.value.startDate, startTime: parsedDateAndTime.value.startTime, endTime: parsedEndTime.value, timeZone: 'America/Los_Angeles', location: parsedLocation.value, description: parsedEventDescription.value, options: ['google', 'apple', 'ms365', 'outlookcom', 'ical'], trigger: 'click', hideBranding: true, hideCheckmark: true, hideBackground: true, hideIconButton: true, listStyle: 'dropdown-static', customCss: '.atcb-button.atcb-active { border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; } .atcb-active .atcb-text::after { transform: rotate(180deg); } #atcb-bgoverlay.atcb-click:hover { cursor: unset; }', debug: debugModeEnabled,
 }))
-
-/* Inject styles into ATCB ShadowDOM on button dropdown:
- - Remove border bottom radii on button
- - Rotate FTVA dropdown triangle
- - Disable custom cursor
-*/
-function handleActbExpandedStyle(e) {
-  const style = document.createElement('style')
-  style.innerHTML
-    = `.atcb-button.atcb-click.atcb-active { 
-          border-bottom-left-radius: 0 !important; 
-          border-bottom-right-radius: 0 !important; 
-        } 
-        .atcb-active .atcb-text::after { 
-          transform: rotate(180deg); 
-        } 
-        #atcb-bgoverlay.atcb-click:hover {  
-          cursor: unset; 
-        }`
-
-  e.target.shadowRoot.appendChild(style)
-}
 
 /*
 - Copy page path to clipboard;
@@ -170,7 +148,7 @@ const parsedClasses = computed(() => {
 
 <template>
   <div :class="parsedClasses">
-    <div v-if="isEvent" v-html="atcbSsrHtml" @click="handleActbExpandedStyle" />
+    <div v-if="isEvent" v-html="atcbSsrHtml" />
 
     <!-- Generic Button -->
     <MobileDrawer v-else>
